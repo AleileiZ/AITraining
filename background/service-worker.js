@@ -1,0 +1,1 @@
+import{n as e,t}from"../assets/storage-L2pITy_j.js";async function n(){if((await chrome.storage.local.get(`webtune:data`))[`webtune:data`]===void 0){let n=await t();await e(n)}}chrome.runtime.onInstalled.addListener(()=>{n()}),chrome.runtime.onStartup.addListener(()=>{n()});
