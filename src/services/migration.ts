@@ -6,7 +6,7 @@ export function createEmptySettings() {
   return {
     shuffle: false,
     loop: false,
-    autoplay: true,
+    autoplay: false,
     lastPlaylistId: undefined,
     lastItemId: undefined
   };

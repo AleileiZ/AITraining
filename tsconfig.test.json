@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".tmp-test",
+    "rootDir": "src",
+    "module": "commonjs",
+    "moduleResolution": "bundler"
+  },
+  "include": [
+    "src/services/migration.ts",
+    "src/services/playlist-service.ts",
+    "src/services/media-service.ts",
+    "src/services/backup.ts",
+    "src/utils/id.ts",
+    "src/utils/url.ts",
+    "src/types/index.ts"
+  ]
+}
