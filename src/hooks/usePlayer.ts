@@ -16,6 +16,14 @@ export interface PlayerActions {
 
 type MutateFn = (fn: (d: AppData) => AppData) => Promise<void>;
 
+function openExternal(url: string): void {
+  if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.create) {
+    void chrome.tabs.create({ url });
+  } else {
+    window.open(url, '_blank', 'noopener');
+  }
+}
+
 const EMPTY_STATE: PlayerState = {
   currentItemId: null,
   playlistId: null,
@@ -82,7 +90,7 @@ export function usePlayer(data: AppData | null, mutate: MutateFn): PlayerActions
       const idx = Math.max(0, queue.indexOf(itemId));
       setState((s) => ({ ...s, currentItemId: itemId, playlistId: plId, queue, queueIndex: idx, isPlaying: true }));
       persist(itemId, plId);
-      void chrome.tabs.create({ url: item.url });
+      openExternal(item.url);
     },
     [data, state.playlistId, persist]
   );
@@ -115,7 +123,7 @@ export function usePlayer(data: AppData | null, mutate: MutateFn): PlayerActions
 
   const openCurrent = useCallback(() => {
     if (!currentItem) return;
-    void chrome.tabs.create({ url: currentItem.url });
+    openExternal(currentItem.url);
     setState((s) => ({ ...s, isPlaying: true }));
   }, [currentItem]);
 
