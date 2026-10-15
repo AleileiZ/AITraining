@@ -3,7 +3,6 @@
   "name": "WebTune",
   "version": "0.1.0",
   "description": "收藏网页影音内容，整理成个人歌单，统一管理与播放",
-  "default_locale": null,
   "permissions": ["storage", "tabs", "activeTab", "scripting"],
   "background": {
     "service_worker": "background/service-worker.js",
